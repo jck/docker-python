@@ -2,7 +2,9 @@ name: Create and publish a Docker image
 on:
   push:
     branches:
-      - main
+      - 'main'
+    tags:
+      - '*'
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: jck/python
@@ -31,8 +33,9 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
-            type=raw,value=latest,enable={{is_default_branch}}
+            type=semver,pattern={{major}}
             type=semver,pattern={{major}}.{{minor}}
+            type=raw,value=latest,enable={{is_default_branch}}
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
