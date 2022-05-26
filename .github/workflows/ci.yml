@@ -31,12 +31,11 @@ jobs:
           tags: |
             type=raw,value=latest,enable={{is_default_branch}}
             type=semver,pattern={{major}}.{{minor}}
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v3
+      - name: Build
+        uses: docker/bake-action@v2
         with:
-          context: .
+          files: |
+            ./docker-bake.hcl
+            ${{ steps.meta.outputs.bake-file }}
+          targets: build
           push: true
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
