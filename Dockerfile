@@ -10,4 +10,6 @@ ENV PYTHONFAULTHANDLER=1 \
     PATH="$PATH:/root/.local/bin"
 
 RUN --mount=type=cache,target=/root/cache/.pip \
-  pip install pipx && pipx install "poetry==$POETRY_VERSION"
+  pip install --upgrade pip && \
+  pip install pipx && \
+  pipx install "poetry==$POETRY_VERSION"
