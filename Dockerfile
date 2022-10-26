@@ -5,7 +5,7 @@ ENV PYTHONFAULTHANDLER=1 \
     PYTHONUNBUFFERED=1 \
     PYTHONPYCACHEPREFIX=/.pycache \
     # poetry:
-    POETRY_VERSION=1.1.13 \
+    POETRY_VERSION=1.2.2 \
     POETRY_NO_INTERACTION=1 \
     PATH="$PATH:/root/.local/bin"
 
