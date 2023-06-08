@@ -1,5 +1,5 @@
 # syntax = docker/dockerfile:experimental
-FROM python:3.11.3-bullseye
+FROM python:3.11.4-bullseye
 
 ENV PYTHONFAULTHANDLER=1 \
     PYTHONUNBUFFERED=1 \
